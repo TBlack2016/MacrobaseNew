@@ -132,6 +132,8 @@ public class MacroBaseConf extends Configuration {
             return new CSVIngester(this);
         } else if (ingesterType == DataIngesterType.POSTGRES_LOADER) {
             return new PostgresIngester(this);
+        } else if (ingesterType == DataIngesterType.POSTGRES_SSL_LOADER) {
+            return new PostgresSSLIngester(this);
         } else if (ingesterType == DataIngesterType.CACHING_POSTGRES_LOADER) {
             return new DiskCachingIngester(this, new PostgresIngester(this));
         } else if (ingesterType == DataIngesterType.MYSQL_LOADER) {
@@ -276,6 +278,7 @@ public class MacroBaseConf extends Configuration {
     public enum DataIngesterType {
         CSV_LOADER,
         POSTGRES_LOADER,
+        POSTGRES_SSL_LOADER,
         CACHING_POSTGRES_LOADER,
         MYSQL_LOADER,
         CACHING_MYSQL_LOADER
